@@ -1,0 +1,364 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+
+const capabilities = [
+  {
+    category: "Obchod",
+    items: [
+      "Kompletní řízení obchodního případu",
+      "Katalogy produktů a služeb",
+      "Více skladů s rezervacemi",
+      "Sledování zboží na cestě",
+      "Podpora čárových kódů",
+      "Cenová politika a správa slev",
+    ],
+  },
+  {
+    category: "Finance a účetnictví",
+    items: [
+      "Kompletní fakturační systém",
+      "Integrace účetnictví",
+      "Elektronické bankovnictví",
+      "Podpora více měn",
+      "Průběžná a dílčí fakturace",
+      "Analýza rentability na zakázku",
+    ],
+  },
+  {
+    category: "Zahraniční obchod",
+    items: [
+      "Vícejazyčné doklady (objednávky, faktury)",
+      "Jazykové mutace rozhraní",
+      "Import a export operace",
+      "Ceny ve více měnách (nákup i prodej)",
+      "Podpora zahraničních partnerů",
+      "Konfigurovatelné jazykové mutace",
+    ],
+  },
+  {
+    category: "Výroba",
+    items: [
+      "Definice výrobků s makrokartami",
+      "Sledování výrobních čísel",
+      "Správa kompletací a sad",
+      "Sledovatelnost na úrovni komponent",
+      "MRP — plánování potřeby materiálu",
+      "Řízení kapacity výrobních linek",
+    ],
+  },
+  {
+    category: "Kvalita a shoda",
+    items: [
+      "Podpora norem ISO řady 9000",
+      "Správa dokumentů",
+      "Evidence zodpovědných osob",
+      "Správa certifikací",
+      "Audit trail",
+      "Sledování korespondence",
+    ],
+  },
+  {
+    category: "Technologie",
+    items: [
+      "Architektura založená na SQL",
+      "Replikace dat mezi pobočkami",
+      "Připojení internet/LAN/modem",
+      "Otevřený systém — plně přizpůsobitelný",
+      "Uživatelsky konfigurovatelné rozhraní",
+      "Propojení na internetový obchod",
+    ],
+  },
+];
+
+const timeline = [
+  { phase: "01", title: "Analýza", desc: "Prostudujeme vaše obchodní procesy a definujeme požadavky" },
+  { phase: "02", title: "Konfigurace", desc: "FARAO je nakonfigurováno podle vašich specifických pracovních postupů" },
+  { phase: "03", title: "Úpravy", desc: "Veškeré úpravy na míru jsou vyvinuty a otestovány" },
+  { phase: "04", title: "Školení", desc: "Plné zaškolení uživatelů a nastavení všech parametrů" },
+  { phase: "05", title: "Nasazení", desc: "Spuštění ostrého provozu s migrací dat a nastavením replikací" },
+  { phase: "06", title: "Podpora", desc: "Průběžná telefonická podpora a pravidelné návštěvy u zákazníka" },
+];
+---
+
+<Layout
+  title="Informační systém FARAO — Podnikový ERP systém od Eliway IT"
+  description="FARAO SQL je komplexní ekonomický informační systém pro řízení středních a menších firem. Obchod, sklad, výroba, fakturace, účetnictví a další."
+  canonicalUrl="/farao"
+>
+  <Navbar currentPath="/farao" />
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative py-20 lg:py-32 overflow-hidden">
+    <!-- Background elements -->
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-amber-500/[0.03] to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/5 rounded-full blur-[100px]"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        <!-- Left content (3 cols) -->
+        <div class="lg:col-span-3">
+          <div class="animate-fade-in-up">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase text-amber-600 border border-amber-500/20 bg-amber-500/5 rounded-sm mb-6">
+              Vlajkový produkt
+            </span>
+          </div>
+
+          <h1 class="animate-fade-in-up delay-100 font-display text-4xl md:text-5xl lg:text-6xl text-navy-200 leading-[1.1] mb-6">
+            FARAO
+            <span class="block text-2xl md:text-3xl lg:text-4xl text-navy-400 mt-2 not-italic">
+              Ekonomický informační systém
+            </span>
+          </h1>
+
+          <p class="animate-fade-in-up delay-200 text-navy-400 text-lg leading-relaxed max-w-2xl mb-8">
+            Komplexní ERP řešení navržené pro řízení středních a menších podniků. Od obchodních operací a správy skladu po výrobu, fakturaci a účetnictví — FARAO vám dává kompletní přehled a kontrolu.
+          </p>
+
+          <div class="animate-fade-in-up delay-300 flex flex-wrap gap-4 mb-12">
+            <Button href="/contact" variant="primary" size="lg">
+              Požádat o prezentaci
+            </Button>
+            <Button href="/products" variant="outline" size="lg">
+              Všechny produkty
+            </Button>
+          </div>
+
+          <!-- Key highlights -->
+          <div class="animate-fade-in-up delay-400 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              { value: "SQL", label: "Architektura" },
+              { value: "25+", label: "Let v praxi" },
+              { value: "9", label: "Oborů" },
+              { value: "∞", label: "Přizpůsobitelný" },
+            ].map((stat) => (
+              <div class="p-4 bg-white/60 border border-navy-800 rounded-sm text-center shadow-sm">
+                <p class="font-display text-xl text-amber-600">{stat.value}</p>
+                <p class="text-[10px] tracking-[0.15em] uppercase text-navy-500 mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right sidebar (2 cols) -->
+        <div class="lg:col-span-2 animate-fade-in delay-400">
+          <div class="relative bg-white/60 border border-navy-800 p-6 rounded-sm shadow-sm">
+            <div class="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-amber-500/40"></div>
+            <h3 class="text-xs tracking-[0.2em] uppercase text-amber-600 mb-4">Hlavní moduly</h3>
+            <div class="space-y-3">
+              {[
+                "Obchod a řízení objednávek",
+                "Sklad a inventář",
+                "Fakturace a vyúčtování",
+                "Integrace účetnictví",
+                "Elektronické bankovnictví",
+                "Výroba a kompletace",
+                "Správa dokumentů",
+                "Replikace dat mezi pobočkami",
+                "Statistiky a reporting",
+                "Cenová politika",
+              ].map((mod, i) => (
+                <div class="flex items-center gap-3 group">
+                  <span class="w-6 h-6 flex items-center justify-center text-[10px] font-mono text-navy-500 border border-navy-800 rounded-sm group-hover:border-amber-500/40 group-hover:text-amber-600 transition-all duration-300">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span class="text-sm text-navy-300 group-hover:text-navy-200 transition-colors duration-300">{mod}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CAPABILITIES GRID ==================== -->
+  <section class="relative py-20 lg:py-32 bg-navy-900/50 border-y border-navy-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <SectionHeader
+        label="Možnosti"
+        title="Vše co potřebujete, <em class='text-gradient not-italic'>nic navíc</em>"
+        description="FARAO pokrývá všechny aspekty řízení firmy s hlubokými, konfigurovatelnými moduly."
+      />
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {capabilities.map((cap, i) => (
+          <div
+            class="p-6 lg:p-8 bg-white/60 border border-navy-800 hover:border-amber-500/20 transition-all duration-500 rounded-sm shadow-sm"
+            data-reveal
+            style={`transition-delay: ${i * 80}ms`}
+          >
+            <h3 class="text-xs tracking-[0.2em] uppercase text-amber-600 mb-5 pb-3 border-b border-navy-800">
+              {cap.category}
+            </h3>
+            <ul class="space-y-3">
+              {cap.items.map((item) => (
+                <li class="flex items-start gap-3 text-sm text-navy-400">
+                  <svg class="w-4 h-4 text-amber-500/60 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== USER EXPERIENCE ==================== -->
+  <section class="relative py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div data-reveal="left">
+          <span class="text-xs font-semibold tracking-[0.25em] uppercase text-amber-600 mb-4 block">Uživatelské prostředí</span>
+          <h2 class="font-display text-3xl md:text-4xl text-navy-200 leading-tight mb-6">
+            Intuitivní ovládání, <em class="text-gradient not-italic">výkonné výsledky</em>
+          </h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center border border-amber-500/30 bg-amber-500/5 rounded-sm flex-shrink-0">
+                <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-navy-200 font-semibold mb-1">Konfigurovatelné rozhraní</h3>
+                <p class="text-navy-400 text-sm leading-relaxed">Přizpůsobte si pořadí sloupců, datové masky a rozložení obrazovky podle pracovního postupu a preferencí každého uživatele.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center border border-amber-500/30 bg-amber-500/5 rounded-sm flex-shrink-0">
+                <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-navy-200 font-semibold mb-1">Vícejazyčný provoz</h3>
+                <p class="text-navy-400 text-sm leading-relaxed">Plné jazykové mutace — spusťte celý systém v angličtině, němčině nebo češtině podle potřeb vaší organizace.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center border border-amber-500/30 bg-amber-500/5 rounded-sm flex-shrink-0">
+                <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-navy-200 font-semibold mb-1">Propojení s internetem</h3>
+                <p class="text-navy-400 text-sm leading-relaxed">Propojení na virtuální obchodní dům, objednávkový systém a automatická synchronizace dat mezi pobočkami.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual mockup -->
+        <div data-reveal="right">
+          <div class="relative bg-white/80 border border-navy-800 rounded-sm overflow-hidden shadow-sm">
+            <!-- Title bar -->
+            <div class="flex items-center gap-2 px-4 py-3 bg-navy-900/60 border-b border-navy-800">
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-navy-700"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-navy-700"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-navy-700"></div>
+              </div>
+              <span class="text-[10px] text-navy-500 font-mono ml-2">FARAO SQL — Přehled</span>
+            </div>
+            <!-- Content mockup -->
+            <div class="p-6">
+              <div class="grid grid-cols-3 gap-3 mb-4">
+                {[
+                  { label: "Tržby", value: "2,4M Kč", trend: "+8%" },
+                  { label: "Objednávky", value: "347", trend: "+12%" },
+                  { label: "Skladové položky", value: "12 459", trend: "—" },
+                ].map((metric) => (
+                  <div class="p-3 bg-navy-900/30 border border-navy-800 rounded-sm">
+                    <p class="text-[9px] text-navy-500 uppercase tracking-wider">{metric.label}</p>
+                    <p class="text-lg font-mono text-navy-200 mt-1">{metric.value}</p>
+                    <p class="text-[10px] text-amber-600 font-mono">{metric.trend}</p>
+                  </div>
+                ))}
+              </div>
+              <!-- Fake chart -->
+              <div class="h-32 bg-navy-900/20 border border-navy-800 rounded-sm p-3 mb-4">
+                <div class="flex items-end h-full gap-1.5">
+                  {[40, 55, 35, 70, 50, 80, 65, 90, 75, 85, 60, 95].map((h) => (
+                    <div class="flex-1 bg-gradient-to-t from-amber-500/30 to-amber-500/60 rounded-sm" style={`height: ${h}%`}></div>
+                  ))}
+                </div>
+              </div>
+              <!-- Fake table -->
+              <div class="space-y-2">
+                {["OBJ-2847", "OBJ-2846", "OBJ-2845"].map((ord, i) => (
+                  <div class="flex items-center justify-between px-3 py-2 bg-navy-900/20 border border-navy-800 rounded-sm text-xs">
+                    <span class="font-mono text-navy-400">{ord}</span>
+                    <span class="text-navy-500">{["Novák s.r.o.", "TechParts a.s.", "BuildCo CZ"][i]}</span>
+                    <span class={`px-2 py-0.5 rounded-sm text-[10px] ${i === 0 ? 'bg-green-500/10 text-green-600' : i === 1 ? 'bg-amber-500/10 text-amber-600' : 'bg-navy-800 text-navy-400'}`}>
+                      {["Dokončeno", "Zpracovává se", "Čeká"][i]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== IMPLEMENTATION PROCESS ==================== -->
+  <section class="relative py-20 lg:py-32 bg-navy-900/50 border-y border-navy-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <SectionHeader
+        label="Implementace"
+        title="Od analýzy po <em class='text-gradient not-italic'>plnou podporu</em>"
+        description="Osvědčený proces nasazení zdokonalovaný více než 25 lety reálných implementací."
+      />
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {timeline.map((step, i) => (
+          <div
+            class="group relative p-6 bg-white/60 border border-navy-800 hover:border-amber-500/30 transition-all duration-500 rounded-sm shadow-sm"
+            data-reveal
+            style={`transition-delay: ${i * 80}ms`}
+          >
+            <span class="font-mono text-3xl text-amber-500/20 group-hover:text-amber-500/40 transition-colors duration-300 absolute top-4 right-4">
+              {step.phase}
+            </span>
+            <div class="mt-8">
+              <h3 class="font-display text-xl text-navy-200 mb-2 group-hover:text-amber-600 transition-colors duration-300">{step.title}</h3>
+              <p class="text-navy-400 text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative py-20 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-900/30 to-navy-950"></div>
+    <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center" data-reveal>
+      <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-navy-200 leading-tight mb-6">
+        Podívejte se na FARAO v akci
+      </h2>
+      <p class="text-navy-400 text-lg max-w-2xl mx-auto mb-10">
+        Kontaktujte náš tým pro bezplatnou, nezávaznou prezentaci. Ukážeme vám přesně, jak může FARAO proměnit chod vaší firmy.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contact" variant="primary" size="lg">
+          Požádat o bezplatnou prezentaci
+        </Button>
+        <Button href="tel:+420608483080" variant="outline" size="lg">
+          +420 608 483 080
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

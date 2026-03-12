@@ -1,11 +1,369 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import Button from '../components/Button.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const industries = [
+  { icon: "🏪", title: "Obchodní firma", description: "Kompletní řízení obchodu — katalogy produktů a služeb, sklady, objednávky, fakturace, účetnictví, elektronické bankovnictví a cenová politika." },
+  { icon: "🔧", title: "Servis automobilů", description: "Evidence vozidel, plánování prohlídek, výkony techniků, normování práce a propojení na systémy výrobců vozidel." },
+  { icon: "⚡", title: "Servis elektro", description: "Servis bílé techniky, výtahů, klimatizací a tepelných čerpadel s plánováním pravidelné údržby." },
+  { icon: "🏗️", title: "Montážní firma", description: "Kompletní vedení zakázky — evidence poptávek, subdodávek, nabídek, objednávek, výkony techniků a správa dokumentů." },
+  { icon: "🏭", title: "Sériová výroba", description: "Řízení kapacity strojů a výrobních linek, MRP plánování, definice výrobků a sledování režijních nákladů." },
+  { icon: "📋", title: "Zakázková výroba", description: "Řízení zakázek s kompletní správou dokumentů — výkresy, PDF přílohy, fakturace a vedení skladu." },
+  { icon: "🔩", title: "Instalatérství", description: "Evidence zásahů u zákazníka, plánování pravidelných prohlídek, kalkulace, výkony dělníků a plánování času." },
+  { icon: "♻️", title: "Výkup surovin", description: "Velice jednoduchá obsluha, rychlé odbavení zákazníků. Prodej vykoupených surovin, zhodnocení a export do EVI." },
+  { icon: "📦", title: "Obchod s paletami", description: "Evidence různých druhů palet — opravy, výkup, prodej, vlastní výroba a propojení na obchodní objednávky." },
+];
+
+const stats = [
+  { value: "25+", label: "Let zkušeností" },
+  { value: "500+", label: "Implementací" },
+  { value: "9", label: "Oborových řešení" },
+  { value: "99%", label: "Spokojenost klientů" },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Eliway IT — Podnikový software a informační systém FARAO" description="Eliway IT dodává B2B podniková softwarová řešení. Náš vlajkový informační systém FARAO pohání firmy v obchodu, výrobě a službách od roku 1999.">
+  <Navbar currentPath="/" />
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden">
+    <!-- Background grid pattern -->
+    <div class="absolute inset-0 opacity-[0.04]">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+    </div>
+
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-navy-700/10 rounded-full blur-[100px]"></div>
+
+    <!-- Decorative geometric lines -->
+    <div class="absolute top-32 left-8 lg:left-16 w-px h-32 bg-gradient-to-b from-amber-500/40 to-transparent"></div>
+    <div class="absolute top-32 left-8 lg:left-16 h-px w-16 bg-gradient-to-r from-amber-500/40 to-transparent"></div>
+    <div class="absolute bottom-32 right-8 lg:right-16 w-px h-32 bg-gradient-to-t from-amber-500/20 to-transparent"></div>
+    <div class="absolute bottom-32 right-8 lg:right-16 h-px w-16 bg-gradient-to-l from-amber-500/20 to-transparent"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-0 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left: Content -->
+        <div>
+          <div class="animate-fade-in-up">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase text-amber-600 border border-amber-500/20 bg-amber-500/5 rounded-sm mb-8">
+              <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+              Od roku 1999
+            </span>
+          </div>
+
+          <h1 class="animate-fade-in-up delay-100 font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-navy-200 leading-[1.1] mb-6">
+            Aplikace pro
+            <span class="block">
+              <em class="text-gradient not-italic">úspěšné</em> řízení
+            </span>
+            vaší firmy!
+          </h1>
+
+          <p class="animate-fade-in-up delay-200 text-navy-400 text-lg lg:text-xl leading-relaxed max-w-lg mb-10">
+            Podnikové informační systémy na míru pro obchodní, výrobní a servisní společnosti. Postaveno na desetiletích praxe.
+          </p>
+
+          <div class="animate-fade-in-up delay-300 flex flex-wrap gap-4">
+            <Button href="/farao" variant="primary" size="lg">
+              Prozkoumat FARAO
+              <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Button>
+            <Button href="/products" variant="outline" size="lg">
+              Všechny produkty
+            </Button>
+          </div>
+        </div>
+
+        <!-- Right: Hero image -->
+        <div class="hidden lg:flex items-center justify-center animate-fade-in delay-400">
+          <img src="/eliway-intro.png" alt="Eliway IT — podnikový software" class="w-full max-w-lg" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in delay-700">
+      <span class="text-[10px] tracking-[0.3em] uppercase text-navy-600">Posunout</span>
+      <div class="w-px h-8 bg-gradient-to-b from-navy-600 to-transparent animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS BAR ==================== -->
+  <section class="relative border-y border-navy-800 bg-navy-900/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        {stats.map((stat, i) => (
+          <div class="text-center" data-reveal style={`transition-delay: ${i * 100}ms`}>
+            <p class="font-display text-4xl lg:text-5xl text-amber-600 mb-2">{stat.value}</p>
+            <p class="text-xs tracking-[0.2em] uppercase text-navy-500">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT PREVIEW ==================== -->
+  <section class="relative py-20 lg:py-32 overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-500/[0.02] to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <div data-reveal="left">
+            <span class="text-xs font-semibold tracking-[0.25em] uppercase text-amber-600 mb-4 block">O Eliway IT</span>
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-navy-200 leading-tight mb-6">
+              Tvoříme podnikový software <em class="text-gradient not-italic">od roku 1999</em>
+            </h2>
+            <p class="text-navy-400 text-lg leading-relaxed mb-6">
+              Jsme výrobcem a dodavatelem ekonomického informačního systému FARAO SQL, správce servisu, výkupu surovin a programování na zakázku.
+            </p>
+            <p class="text-navy-400 text-lg leading-relaxed mb-8">
+              Nabízíme realizaci zakázky na klíč, kompletní servis včetně údržby systému nebo pouze dílčí služby podle potřeby zákazníka. Obvyklá smlouva zahrnuje telefonickou podporu a pravidelné návštěvy.
+            </p>
+            <Button href="/about" variant="outline" size="md">
+              Více o nás
+              <svg class="w-3.5 h-3.5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Button>
+          </div>
+        </div>
+
+        <div data-reveal="right" class="relative">
+          <!-- Abstract representation of system architecture -->
+          <div class="relative bg-white/60 border border-navy-800 p-8 lg:p-12 rounded-sm shadow-sm">
+            <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-amber-500/40"></div>
+            <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-amber-500/40"></div>
+
+            <div class="grid grid-cols-3 gap-4">
+              {[
+                { label: "ERP", sub: "Jádro" },
+                { label: "CRM", sub: "Vztahy" },
+                { label: "WMS", sub: "Sklad" },
+                { label: "SCM", sub: "Dodávky" },
+                { label: "MRP", sub: "Plánování" },
+                { label: "FIN", sub: "Finance" },
+                { label: "HR", sub: "Lidé" },
+                { label: "BI", sub: "Analytika" },
+                { label: "API", sub: "Propojení" },
+              ].map((mod, i) => (
+                <div class={`p-4 text-center border transition-all duration-500 rounded-sm hover:border-amber-500/40 hover:bg-amber-500/5 ${i === 4 ? 'border-amber-500/30 bg-amber-500/5' : 'border-navy-800 bg-navy-900/30'}`}>
+                  <p class={`font-mono text-sm font-medium ${i === 4 ? 'text-amber-600' : 'text-navy-300'}`}>{mod.label}</p>
+                  <p class="text-[10px] text-navy-500 mt-1">{mod.sub}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-navy-800">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                  <span class="text-xs text-navy-500">Všechny systémy v provozu</span>
+                </div>
+                <span class="font-mono text-xs text-navy-600">FARAO v4.2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FLAGSHIP PRODUCT ==================== -->
+  <section class="relative py-20 lg:py-32 bg-navy-900/50 border-y border-navy-800">
+    <div class="absolute inset-0 opacity-[0.02]">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="diag" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="40" stroke="currentColor" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#diag)" />
+      </svg>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16" data-reveal>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase text-amber-600 border border-amber-500/20 bg-amber-500/5 rounded-sm mb-6">
+          Vlajkový produkt
+        </span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-6xl text-navy-200 leading-tight">
+          Informační systém <em class="text-gradient not-italic">FARAO</em>
+        </h2>
+        <p class="mt-4 text-navy-400 text-lg max-w-2xl mx-auto">
+          Komplexní ekonomický informační systém pro řízení středních a menších společností — od obchodu a skladování po výrobu a účetnictví.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal>
+        {[
+          { icon: "📊", title: "Kompletní řízení obchodu", desc: "Přehledné vedení obchodního případu s analýzou, integrace skladu, rezervace a sledování zboží na cestě." },
+          { icon: "🌍", title: "Zahraniční obchod", desc: "Neomezená agenda obchodování se zahraničím — vícejazyčné doklady, ceny v cizích měnách, export i import." },
+          { icon: "🏭", title: "Výroba a kompletace", desc: "Definice výrobků pomocí makrokaret, evidence výrobních čísel celých sestav i jednotlivých komponent." },
+          { icon: "📋", title: "Podpora ISO 9000", desc: "Integrovaná správa dokumentů, evidence zodpovědných osob a podpora systému řízení kvality." },
+          { icon: "🔄", title: "Replikace dat", desc: "Automatická replikace dat z více vzdálených středisek modemem, internetem či sítí LAN." },
+          { icon: "⚙️", title: "Plně přizpůsobitelný", desc: "Otevřená architektura s uživatelsky nastavitelným rozhraním, vlastním řazením sloupců a úpravami na míru." },
+        ].map((feature, i) => (
+          <div
+            class="group p-6 bg-white/60 border border-navy-800 hover:border-amber-500/30 transition-all duration-500 rounded-sm shadow-sm"
+            style={`transition-delay: ${i * 80}ms`}
+          >
+            <div class="text-2xl mb-3">{feature.icon}</div>
+            <h3 class="text-navy-200 font-semibold mb-2 group-hover:text-amber-600 transition-colors">{feature.title}</h3>
+            <p class="text-navy-400 text-sm leading-relaxed">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12" data-reveal>
+        <Button href="/farao" variant="primary" size="lg">
+          Zjistit více o FARAO
+          <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INDUSTRY SOLUTIONS ==================== -->
+  <section class="relative py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <SectionHeader
+        label="Oborová řešení"
+        title="Na míru <em class='text-gradient not-italic'>vašemu oboru</em>"
+        description="FARAO se přizpůsobí jedinečným požadavkům rozmanitých podnikatelských sektorů. Náš tým nakonfiguruje každé nasazení pro maximální efektivitu."
+      />
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {industries.map((industry, i) => (
+          <FeatureCard
+            icon={industry.icon}
+            title={industry.title}
+            description={industry.description}
+            index={i}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OTHER PRODUCTS ==================== -->
+  <section class="relative py-20 lg:py-32 border-t border-navy-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <SectionHeader
+        label="Produktová řada"
+        title="Nejen <em class='text-gradient not-italic'>FARAO</em>"
+        description="Specializované nástroje, které fungují samostatně nebo se bezproblémově integrují s ekosystémem FARAO."
+      />
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        {[
+          {
+            title: "Správa servisu",
+            desc: "Nejlépe zpracovaný produkt pro řízení servisů na trhu. Evidence vozidel, plánování prohlídek, výkony techniků a propojení se systémy výrobců.",
+            tag: "Správce Servisu",
+            href: "/products#service",
+          },
+          {
+            title: "Výkup surovin",
+            desc: "Velice jednoduchá obsluha s vysokou rychlostí zadávání. Nákup, prodej, zhodnocení surovin a export do EVI — vše s minimální potřebou zaškolení.",
+            tag: "Výkup Surovin",
+            href: "/products#collection",
+          },
+          {
+            title: "Řízení zakázek a plánování času",
+            desc: "Grafikon plánování času pro pracovníky a čety, sledování výdejů dílů, průběžná fakturace a kompletní řízení životního cyklu zakázky.",
+            tag: "Řízení Zakázek",
+            href: "/products#planning",
+          },
+          {
+            title: "Programování na zakázku",
+            desc: "Programování databází, specializované aplikace, nástroje pro vyhodnocení dat, doplňky a rozhraní pro integraci s vaším stávajícím informačním systémem.",
+            tag: "Na Zakázku",
+            href: "/products#programming",
+          },
+        ].map((product, i) => (
+          <a
+            href={product.href}
+            class="group relative p-8 lg:p-10 bg-white/60 border border-navy-800 hover:border-amber-500/30 transition-all duration-500 rounded-sm overflow-hidden shadow-sm"
+            data-reveal
+            style={`transition-delay: ${i * 100}ms`}
+          >
+            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-amber-500/0 via-amber-500/30 to-amber-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div class="flex items-start justify-between mb-4">
+              <span class="px-2 py-1 text-[10px] tracking-[0.15em] uppercase text-amber-600 border border-amber-500/20 bg-amber-500/5 rounded-sm font-mono">
+                {product.tag}
+              </span>
+              <svg class="w-5 h-5 text-navy-600 group-hover:text-amber-600 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
+            </div>
+
+            <h3 class="font-display text-2xl text-navy-200 mb-3 group-hover:text-amber-600 transition-colors duration-300">{product.title}</h3>
+            <p class="text-navy-400 text-sm leading-relaxed">{product.desc}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-12" data-reveal>
+        <Button href="/products" variant="secondary" size="md">
+          Zobrazit všechny produkty
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative py-20 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-900/30 to-navy-950"></div>
+    <div class="absolute inset-0 opacity-[0.03]">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="1" fill="currentColor"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center" data-reveal>
+      <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-navy-200 leading-tight mb-6">
+        Připraveni změnit způsob, <br/>jak řídíte svou <em class="text-gradient not-italic">firmu</em>?
+      </h2>
+      <p class="text-navy-400 text-lg max-w-2xl mx-auto mb-10">
+        Ukážeme vám, jak FARAO a naše sada podnikových nástrojů mohou zefektivnit vaše procesy. Požádejte o bezplatnou prezentaci.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contact" variant="primary" size="lg">
+          Požádat o prezentaci
+        </Button>
+        <Button href="tel:+420608483080" variant="outline" size="lg">
+          <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Zavolat
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </Layout>

@@ -1,0 +1,157 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+
+const navLinks = [
+  { href: "/", label: "Domů" },
+  { href: "/products", label: "Produkty" },
+  { href: "/farao", label: "FARAO" },
+  { href: "/about", label: "O nás" },
+  { href: "/contact", label: "Kontakt" },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-nav">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center group" aria-label="Eliway IT Domů">
+        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-12 w-auto" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "relative px-4 py-2 text-sm tracking-wide transition-colors duration-200",
+              currentPath === link.href
+                ? "text-amber-600"
+                : "text-navy-400 hover:text-navy-200",
+            ]}
+          >
+            {link.label}
+            {currentPath === link.href && (
+              <span class="absolute bottom-0 left-4 right-4 h-px bg-amber-500" />
+            )}
+          </a>
+        ))}
+        <a
+          href="/contact"
+          class="ml-6 px-5 py-2.5 bg-amber-500 text-white text-sm font-semibold tracking-wide hover:bg-amber-400 transition-colors duration-200 rounded-sm"
+        >
+          Kontaktujte nás
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="lg:hidden flex flex-col gap-1.5 p-2"
+        id="mobile-menu-btn"
+        aria-label="Otevřít menu"
+        aria-expanded="false"
+      >
+        <span class="w-6 h-px bg-navy-300 transition-all duration-300 origin-center" id="bar-1"></span>
+        <span class="w-6 h-px bg-navy-300 transition-all duration-300" id="bar-2"></span>
+        <span class="w-4 h-px bg-amber-500 transition-all duration-300 origin-center" id="bar-3"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="lg:hidden fixed inset-0 top-20 bg-white/98 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-out z-40"
+    id="mobile-menu"
+  >
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      {navLinks.map((link, i) => (
+        <a
+          href={link.href}
+          class:list={[
+            "text-2xl tracking-wide transition-colors duration-200",
+            currentPath === link.href
+              ? "text-amber-600 font-display italic"
+              : "text-navy-400 hover:text-navy-200",
+          ]}
+          style={`transition-delay: ${i * 50}ms`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="mt-4 px-8 py-3 bg-amber-500 text-white font-semibold tracking-wide hover:bg-amber-400 transition-colors duration-200"
+      >
+        Kontaktujte nás
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer -->
+<div class="h-20"></div>
+
+<script>
+  // Navbar scroll effect
+  const nav = document.getElementById('main-nav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > 50) {
+      nav?.classList.add('bg-white/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-navy-800/10');
+    } else {
+      nav?.classList.remove('bg-white/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-navy-800/10');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar-1');
+  const bar2 = document.getElementById('bar-2');
+  const bar3 = document.getElementById('bar-3');
+  let isOpen = false;
+
+  btn?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    
+    if (isOpen) {
+      menu?.classList.remove('translate-x-full');
+      menu?.classList.add('translate-x-0');
+      bar1?.classList.add('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.add('opacity-0');
+      bar3?.classList.add('-rotate-45', '-translate-y-[4px]', 'w-6');
+      document.body.style.overflow = 'hidden';
+    } else {
+      menu?.classList.add('translate-x-full');
+      menu?.classList.remove('translate-x-0');
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+      document.body.style.overflow = '';
+    }
+    
+    btn?.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close mobile menu on link click
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      menu?.classList.add('translate-x-full');
+      menu?.classList.remove('translate-x-0');
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

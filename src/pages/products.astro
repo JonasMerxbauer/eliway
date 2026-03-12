@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+
+const products = [
+  {
+    id: "farao",
+    tag: "Vlajkový produkt",
+    title: "Informační systém FARAO",
+    subtitle: "Komplexní ERP pro střední a menší firmy",
+    description: "Ekonomický informační systém pokrývající řízení obchodu, skladování, fakturaci, účetnictví, výrobu a provoz více poboček. Páteř vašeho podnikání.",
+    features: [
+      "Kompletní řízení obchodního případu",
+      "Více skladů s rezervacemi",
+      "Sledování výroby a kompletace",
+      "Podpora norem ISO 9000",
+      "Více měn a jazyků",
+      "Automatická replikace mezi pobočkami",
+    ],
+    cta: { label: "Prozkoumat FARAO", href: "/farao" },
+    highlight: true,
+  },
+  {
+    id: "service",
+    tag: "Správce Servisu",
+    title: "Správa servisu",
+    subtitle: "Informační systém pro řízení servisů",
+    description: "Ověřeně nejlépe zpracovaný produkt pro řízení servisů na trhu. Evidence vozidel, techniků, prohlídek a výkonů — samostatně nebo integrovaně s FARAO.",
+    features: [
+      "Evidence vozidel a zařízení",
+      "Plánování prohlídek",
+      "Sledování výkonů techniků",
+      "Kalkulace a odhady nákladů",
+      "Normování práce",
+      "Propojení se systémy výrobců",
+    ],
+    cta: { label: "Zjistit více", href: "/contact" },
+    highlight: false,
+  },
+  {
+    id: "collection",
+    tag: "Výkup Surovin",
+    title: "Výkup surovin",
+    subtitle: "Modul pro majitele sběren",
+    description: "Vysoká rychlost zadávání s uživatelsky příjemným řešením. Správa nákupu, prodeje, zhodnocení a regulačních exportů s minimální potřebou zaškolení.",
+    features: [
+      "Ultra rychlé zadávání dat",
+      "Optimalizace obsluhy zákazníků",
+      "Sledování nákupu a prodeje",
+      "Správa zhodnocení materiálu",
+      "Export do EVI",
+      "Samostatně nebo s FARAO",
+    ],
+    cta: { label: "Zjistit více", href: "/contact" },
+    highlight: false,
+  },
+  {
+    id: "planning",
+    tag: "Řízení Zakázek",
+    title: "Řízení zakázek a plánování času",
+    subtitle: "Modul pro montážní a údržbářské firmy",
+    description: "Přehledný grafikon plánování času pro pracovníky a čety, kompletní řízení zakázky od úvodních nabídek po dokončení s průběžným sledováním rentability.",
+    features: [
+      "Grafikon plánování pracovníků/čet",
+      "Sledování dílů a materiálu na zakázku",
+      "Průběžná dílčí fakturace",
+      "Průběžná rentabilita zakázky",
+      "Správa dokumentů a korespondence",
+      "Propojení s ERP systémem",
+    ],
+    cta: { label: "Zjistit více", href: "/contact" },
+    highlight: false,
+  },
+  {
+    id: "programming",
+    tag: "Na Zakázku",
+    title: "Programování na zakázku",
+    subtitle: "Softwarová řešení přesně pro vás",
+    description: "Když standardní řešení nestačí, naprogramujeme přesně to, co potřebujete. Od databázových aplikací a specializovaných nástrojů po doplňky a integrace s vašimi stávajícími systémy.",
+    features: [
+      "Databáze a evidenční systémy",
+      "Specializované aplikace",
+      "Nástroje pro analýzu dat a reporting",
+      "Doplňky ke stávajícím systémům",
+      "API integrace a rozhraní",
+      "Podpora celého životního cyklu",
+    ],
+    cta: { label: "Projednat váš projekt", href: "/contact" },
+    highlight: false,
+  },
+];
+---
+
+<Layout
+  title="Produkty — Podniková softwarová řešení | Eliway IT"
+  description="Prozkoumejte produktovou řadu Eliway IT: ERP systém FARAO, Správa servisu, Výkup surovin, Řízení zakázek a Programování na zakázku."
+  canonicalUrl="/products"
+>
+  <Navbar currentPath="/products" />
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative py-20 lg:py-28 overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-500/[0.02] to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="animate-fade-in-up">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase text-amber-600 border border-amber-500/20 bg-amber-500/5 rounded-sm mb-6">
+            Produktová řada
+          </span>
+        </div>
+
+        <h1 class="animate-fade-in-up delay-100 font-display text-4xl md:text-5xl lg:text-6xl text-navy-200 leading-[1.1] mb-6">
+          Nástroje pro <em class="text-gradient not-italic">reálné firmy</em>
+        </h1>
+
+        <p class="animate-fade-in-up delay-200 text-navy-400 text-lg lg:text-xl leading-relaxed">
+          Pět produktů, jedna filozofie: software by se měl přizpůsobit tomu, jak pracujete — ne naopak. Každé řešení funguje samostatně nebo se bezproblémově integruje s ekosystémem FARAO.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRODUCTS ==================== -->
+  <section class="relative pb-20 lg:pb-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="space-y-8">
+        {products.map((product, i) => (
+          <div
+            id={product.id}
+            class:list={[
+              "group relative overflow-hidden rounded-sm border transition-all duration-500",
+              product.highlight
+                ? "bg-gradient-to-br from-white/80 to-navy-900/30 border-amber-500/20 hover:border-amber-500/40 shadow-sm"
+                : "bg-white/60 border-navy-800 hover:border-navy-700 shadow-sm",
+            ]}
+            data-reveal
+            style={`transition-delay: ${i * 80}ms`}
+          >
+            {product.highlight && (
+              <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-amber-500/0 via-amber-500/50 to-amber-500/0"></div>
+            )}
+
+            <div class="p-8 lg:p-12">
+              <div class="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16">
+                <!-- Left: Info -->
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class:list={[
+                      "px-2 py-1 text-[10px] tracking-[0.15em] uppercase font-mono rounded-sm",
+                      product.highlight
+                        ? "text-amber-600 border border-amber-500/30 bg-amber-500/10"
+                        : "text-navy-500 border border-navy-800 bg-navy-900/50",
+                    ]}>
+                      {product.tag}
+                    </span>
+                  </div>
+
+                  <h2 class="font-display text-2xl lg:text-3xl text-navy-200 mb-2 group-hover:text-amber-600 transition-colors duration-300">
+                    {product.title}
+                  </h2>
+                  <p class="text-sm text-amber-600/70 mb-4">{product.subtitle}</p>
+                  <p class="text-navy-400 leading-relaxed mb-6 max-w-xl">{product.description}</p>
+
+                  <Button href={product.cta.href} variant={product.highlight ? 'primary' : 'outline'} size="md">
+                    {product.cta.label}
+                    <svg class="w-3.5 h-3.5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Button>
+                </div>
+
+                <!-- Right: Features -->
+                <div class="lg:w-80 flex-shrink-0">
+                  <h4 class="text-xs tracking-[0.2em] uppercase text-navy-600 mb-4">Klíčové funkce</h4>
+                  <ul class="space-y-3">
+                    {product.features.map((feature) => (
+                      <li class="flex items-start gap-3 text-sm text-navy-400">
+                        <svg class="w-4 h-4 text-amber-500/60 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INTEGRATION DIAGRAM ==================== -->
+  <section class="relative py-20 lg:py-32 bg-navy-900/50 border-y border-navy-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <SectionHeader
+        label="Integrace"
+        title="Jeden ekosystém, <em class='text-gradient not-italic'>nekonečné možnosti</em>"
+        description="Všechny produkty jsou navrženy pro vzájemnou spolupráci. Začněte s jedním, rozšiřujte podle potřeby."
+      />
+
+      <div class="relative max-w-3xl mx-auto" data-reveal>
+        <!-- Center hub -->
+        <div class="flex justify-center mb-8">
+          <div class="relative p-6 bg-white/80 border-2 border-amber-500/30 rounded-sm text-center shadow-sm">
+            <p class="font-display text-2xl text-amber-600">FARAO SQL</p>
+            <p class="text-xs text-navy-500 mt-1">Jádro ERP platformy</p>
+          </div>
+        </div>
+
+        <!-- Connector lines visual -->
+        <div class="flex justify-center mb-8">
+          <div class="w-px h-8 bg-gradient-to-b from-amber-500/30 to-navy-800"></div>
+        </div>
+
+        <!-- Surrounding modules -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { name: "Správa servisu", icon: "🔧" },
+            { name: "Výkup surovin", icon: "♻️" },
+            { name: "Řízení zakázek", icon: "📋" },
+            { name: "Na zakázku", icon: "⚙️" },
+          ].map((mod) => (
+            <div class="p-4 bg-white/60 border border-navy-800 rounded-sm text-center hover:border-amber-500/20 transition-all duration-300 shadow-sm">
+              <span class="text-2xl block mb-2">{mod.icon}</span>
+              <p class="text-sm text-navy-300">{mod.name}</p>
+              <div class="w-4 h-px bg-amber-500/30 mx-auto mt-3"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative py-20 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-900/30 to-navy-950"></div>
+    <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center" data-reveal>
+      <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-navy-200 leading-tight mb-6">
+        Nevíte, který produkt se <em class="text-gradient not-italic">hodí</em>?
+      </h2>
+      <p class="text-navy-400 text-lg max-w-2xl mx-auto mb-10">
+        Naši konzultanti zanalyzují potřeby vaší firmy a doporučí správnou kombinaci nástrojů. Úvodní konzultace je vždy zdarma.
+      </p>
+      <Button href="/contact" variant="primary" size="lg">
+        Získat odbornou radu
+      </Button>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

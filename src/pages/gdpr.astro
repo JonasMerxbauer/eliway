@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout
+  title="Zásady zpracování osobních údajů — Eliway IT"
+  description="Zásady ochrany osobních údajů a zpracování dat společnosti Eliway IT."
+  canonicalUrl="/gdpr"
+>
+  <Navbar />
+
+  <section class="relative py-20 lg:py-32">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      <div class="animate-fade-in-up">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase text-amber-600 border border-amber-500/20 bg-amber-500/5 rounded-sm mb-6">
+          Právní informace
+        </span>
+      </div>
+
+      <h1 class="animate-fade-in-up delay-100 font-display text-3xl md:text-4xl lg:text-5xl text-navy-200 leading-tight mb-8">
+        Zásady zpracování osobních údajů
+      </h1>
+
+      <div class="prose max-w-none space-y-6 text-navy-400 leading-relaxed">
+        <p>
+          Společnost ELIWAY I.T., s.r.o. bere ochranu vašich osobních údajů vážně. Tyto zásady popisují, jak shromažďujeme, používáme a chráníme vaše informace v souladu s Obecným nařízením o ochraně osobních údajů (GDPR).
+        </p>
+
+        <h2 class="font-display text-xl text-navy-200 mt-8 mb-4">Správce údajů</h2>
+        <p>
+          ELIWAY I.T., s.r.o.<br/>
+          Věšínova 939/4, Praha 10 - Strašnice<br/>
+          E-mail: stepan@eliwayit.cz<br/>
+          Telefon: +420 608 483 080
+        </p>
+
+        <h2 class="font-display text-xl text-navy-200 mt-8 mb-4">Jaké údaje shromažďujeme</h2>
+        <p>
+          Při kontaktu s námi nebo využívání našich služeb můžeme shromažďovat následující osobní údaje:
+        </p>
+        <ul class="list-disc list-inside space-y-2 ml-4">
+          <li>Jméno a příjmení</li>
+          <li>E-mailová adresa</li>
+          <li>Telefonní číslo</li>
+          <li>Název firmy a obchodní údaje</li>
+          <li>Informace poskytnuté v kontaktních formulářích nebo e-mailech</li>
+        </ul>
+
+        <h2 class="font-display text-xl text-navy-200 mt-8 mb-4">Účel zpracování</h2>
+        <p>
+          Vaše osobní údaje zpracováváme pro následující účely:
+        </p>
+        <ul class="list-disc list-inside space-y-2 ml-4">
+          <li>Odpovídání na vaše dotazy a poskytování zákaznické podpory</li>
+          <li>Poskytování našich produktů a služeb</li>
+          <li>Plnění smluvních závazků</li>
+          <li>Zasílání relevantních obchodních sdělení (s vaším souhlasem)</li>
+        </ul>
+
+        <h2 class="font-display text-xl text-navy-200 mt-8 mb-4">Vaše práva</h2>
+        <p>
+          Podle GDPR máte právo na přístup k vašim osobním údajům, jejich opravu, výmaz nebo omezení zpracování. Máte také právo na přenositelnost údajů a právo vznést námitku proti zpracování.
+        </p>
+        <p>
+          Pro uplatnění kteréhokoli z těchto práv nás prosím kontaktujte na <a href="mailto:stepan@eliwayit.cz" class="text-amber-600 hover:text-amber-400 underline underline-offset-2">stepan@eliwayit.cz</a>.
+        </p>
+
+        <h2 class="font-display text-xl text-navy-200 mt-8 mb-4">Uchovávání údajů</h2>
+        <p>
+          Vaše osobní údaje uchováváme pouze po dobu nezbytnou k naplnění účelů, pro které byly shromážděny, nebo jak vyžaduje zákon.
+        </p>
+
+        <h2 class="font-display text-xl text-navy-200 mt-8 mb-4">Kontakt</h2>
+        <p>
+          V případě jakýchkoli dotazů ohledně zpracování vašich osobních údajů nás prosím kontaktujte na <a href="mailto:stepan@eliwayit.cz" class="text-amber-600 hover:text-amber-400 underline underline-offset-2">stepan@eliwayit.cz</a>.
+        </p>
+      </div>
+
+      <div class="mt-12">
+        <Button href="/" variant="outline" size="md">
+          Zpět na úvodní stránku
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
