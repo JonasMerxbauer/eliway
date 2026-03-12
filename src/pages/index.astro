@@ -76,7 +76,9 @@ const stats = [
   <Navbar currentPath="/" />
 
   <!-- ==================== HERO ==================== -->
-  <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+  <section
+    class="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden"
+  >
     <!-- Background grid pattern -->
     <div class="absolute inset-0 opacity-[0.04]">
       <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -110,19 +112,19 @@ const stats = [
 
     <!-- Decorative geometric lines -->
     <div
-      class="absolute top-32 left-8 lg:left-16 w-px h-32 bg-gradient-to-b from-amber-500/40 to-transparent"
+      class="absolute top-16 left-4 xl:top-32 xl:left-16 w-px h-32 bg-gradient-to-b from-amber-500/40 to-transparent"
     >
     </div>
     <div
-      class="absolute top-32 left-8 lg:left-16 h-px w-16 bg-gradient-to-r from-amber-500/40 to-transparent"
+      class="absolute top-16 left-4 xl:top-32 xl:left-16 h-px w-16 bg-gradient-to-r from-amber-500/40 to-transparent"
     >
     </div>
     <div
-      class="absolute bottom-32 right-8 lg:right-16 w-px h-32 bg-gradient-to-t from-amber-500/20 to-transparent"
+      class="absolute bottom-16 right-4 xl:bottom-32 xl:right-16 w-px h-32 bg-gradient-to-t from-amber-500/20 to-transparent"
     >
     </div>
     <div
-      class="absolute bottom-32 right-8 lg:right-16 h-px w-16 bg-gradient-to-l from-amber-500/20 to-transparent"
+      class="absolute bottom-16 right-4 xl:bottom-32 xl:right-16 h-px w-16 bg-gradient-to-l from-amber-500/20 to-transparent"
     >
     </div>
 
@@ -194,7 +196,7 @@ const stats = [
 
     <!-- Scroll indicator -->
     <div
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in delay-700"
+      class="relative md:absolute md:bottom-8 md:left-1/2 md:-translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in delay-700"
     >
       <span class="text-[10px] tracking-[0.3em] uppercase text-navy-600"
         >Posunout</span
