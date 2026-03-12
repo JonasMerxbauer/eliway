@@ -71,10 +71,7 @@ body {
 
 /* ===== UTILITY CLASSES ===== */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-amber-400), var(--color-amber-700));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-amber-500);
 }
 
 .bg-noise {
