@@ -17,70 +17,120 @@ const companyLinks = [
 
 <footer class="relative bg-navy-900 border-t border-navy-800">
   <!-- Decorative top line -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+  <div
+    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
+  >
+  </div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <!-- Main Footer -->
-    <div class="py-16 lg:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+    <div
+      class="py-16 lg:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
+    >
       <!-- Brand Column -->
       <div class="lg:col-span-1">
         <a href="/" class="flex items-center group mb-6">
-          <img src="/eliway-logo-icon.png" alt="Eliway IT" class="h-10 w-auto" />
+          <img
+            src="/eliway-logo-icon.png"
+            alt="Eliway IT"
+            class="h-10 w-auto"
+          />
         </a>
         <p class="text-navy-400 text-sm leading-relaxed max-w-xs">
-          Dodáváme podnikové B2B softwarové řešení od roku 1999. Pomáháme firmám po celé České republice a nejen jim.
+          Dodáváme podnikové B2B softwarové řešení od roku 1999. Pomáháme firmám
+          po celé České republice a nejen jim.
         </p>
       </div>
 
       <!-- Products -->
       <div>
-        <h3 class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-6">Produkty</h3>
+        <h3
+          class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-6"
+        >
+          Produkty
+        </h3>
         <ul class="space-y-3">
-          {productLinks.map((link) => (
-            <li>
-              <a href={link.href} class="text-sm text-navy-400 hover:text-navy-200 transition-colors duration-200">
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {
+            productLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-navy-400 hover:text-navy-200 transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <!-- Company -->
       <div>
-        <h3 class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-6">Společnost</h3>
+        <h3
+          class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-6"
+        >
+          Společnost
+        </h3>
         <ul class="space-y-3">
-          {companyLinks.map((link) => (
-            <li>
-              <a href={link.href} class="text-sm text-navy-400 hover:text-navy-200 transition-colors duration-200">
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-navy-400 hover:text-navy-200 transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <!-- Contact -->
       <div>
-        <h3 class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-6">Kontakt</h3>
+        <h3
+          class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-6"
+        >
+          Kontakt
+        </h3>
         <div class="space-y-4">
           <div>
-            <p class="text-xs text-navy-500 uppercase tracking-wider mb-1">Kancelář Praha</p>
-            <p class="text-sm text-navy-300">Věšínova 939/4, Praha 10 - Strašnice</p>
-            <a href="tel:+420608483080" class="text-sm text-amber-600 hover:text-amber-400 transition-colors">
+            <p class="text-xs text-navy-500 uppercase tracking-wider mb-1">
+              Kancelář Praha
+            </p>
+            <p class="text-sm text-navy-300">
+              Věšínova 939/4, Praha 10 - Strašnice
+            </p>
+            <a
+              href="tel:+420608483080"
+              class="text-sm text-amber-600 hover:text-amber-400 transition-colors"
+            >
               +420 608 483 080
             </a>
-            <a href="mailto:stepan@eliwayit.cz" class="block text-sm text-amber-600 hover:text-amber-400 transition-colors">
+            <a
+              href="mailto:stepan@eliwayit.cz"
+              class="block text-sm text-amber-600 hover:text-amber-400 transition-colors"
+            >
               stepan@eliwayit.cz
             </a>
           </div>
           <div>
-            <p class="text-xs text-navy-500 uppercase tracking-wider mb-1">Pobočka Plzeň</p>
+            <p class="text-xs text-navy-500 uppercase tracking-wider mb-1">
+              Pobočka Plzeň
+            </p>
             <p class="text-sm text-navy-300">Částkova 74, Plzeň</p>
-            <a href="tel:+420777228930" class="text-sm text-amber-600 hover:text-amber-400 transition-colors">
+            <a
+              href="tel:+420777228930"
+              class="text-sm text-amber-600 hover:text-amber-400 transition-colors"
+            >
               +420 777 228 930
             </a>
-            <a href="mailto:plzen@eliwayit.cz" class="block text-sm text-amber-600 hover:text-amber-400 transition-colors">
+            <a
+              href="mailto:plzen@eliwayit.cz"
+              class="block text-sm text-amber-600 hover:text-amber-400 transition-colors"
+            >
               plzen@eliwayit.cz
             </a>
           </div>
@@ -89,12 +139,17 @@ const companyLinks = [
     </div>
 
     <!-- Bottom Bar -->
-    <div class="py-6 border-t border-navy-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div
+      class="py-6 border-t border-navy-800 flex flex-col sm:flex-row justify-between items-center gap-4"
+    >
       <p class="text-xs text-navy-500">
         &copy; {currentYear} Eliway IT, s.r.o. Všechna práva vyhrazena.
       </p>
       <div class="flex items-center gap-6">
-        <a href="mailto:stepan@eliwayit.cz" class="text-xs text-navy-500 hover:text-amber-600 transition-colors">
+        <a
+          href="mailto:stepan@eliwayit.cz"
+          class="text-xs text-navy-500 hover:text-amber-600 transition-colors"
+        >
           stepan@eliwayit.cz
         </a>
       </div>

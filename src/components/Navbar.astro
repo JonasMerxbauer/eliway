@@ -13,7 +13,10 @@ const navLinks = [
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-nav">
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  id="main-nav"
+>
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <nav class="flex items-center justify-between h-20">
       <!-- Logo -->
@@ -23,22 +26,24 @@ const navLinks = [
 
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center gap-1">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "relative px-4 py-2 text-sm tracking-wide transition-colors duration-200",
-              currentPath === link.href
-                ? "text-amber-600"
-                : "text-navy-400 hover:text-navy-200",
-            ]}
-          >
-            {link.label}
-            {currentPath === link.href && (
-              <span class="absolute bottom-0 left-4 right-4 h-px bg-amber-500" />
-            )}
-          </a>
-        ))}
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                "relative px-4 py-2 text-sm tracking-wide transition-colors duration-200",
+                currentPath === link.href
+                  ? "text-amber-600"
+                  : "text-navy-400 hover:text-navy-200",
+              ]}
+            >
+              {link.label}
+              {currentPath === link.href && (
+                <span class="absolute bottom-0 left-4 right-4 h-px bg-amber-500" />
+              )}
+            </a>
+          ))
+        }
         <a
           href="/contact"
           class="ml-6 px-5 py-2.5 bg-amber-500 text-white text-sm font-semibold tracking-wide hover:bg-amber-400 transition-colors duration-200 rounded-sm"
@@ -54,13 +59,18 @@ const navLinks = [
         aria-label="Otevřít menu"
         aria-expanded="false"
       >
-        <span class="w-6 h-px bg-navy-300 transition-all duration-300 origin-center" id="bar-1"></span>
-        <span class="w-6 h-px bg-navy-300 transition-all duration-300" id="bar-2"></span>
-        <span class="w-4 h-px bg-amber-500 transition-all duration-300 origin-center" id="bar-3"></span>
+        <span
+          class="w-6 h-px bg-navy-300 transition-all duration-300 origin-center"
+          id="bar-1"></span>
+        <span
+          class="w-6 h-px bg-navy-300 transition-all duration-300"
+          id="bar-2"></span>
+        <span
+          class="w-4 h-px bg-amber-500 transition-all duration-300 origin-center"
+          id="bar-3"></span>
       </button>
     </nav>
   </div>
-
 </header>
 
 <!-- Mobile Menu -->
@@ -69,20 +79,22 @@ const navLinks = [
   id="mobile-menu"
 >
   <div class="flex flex-col items-center justify-center h-full gap-8">
-    {navLinks.map((link, i) => (
-      <a
-        href={link.href}
-        class:list={[
-          "text-2xl tracking-wide transition-colors duration-200",
-          currentPath === link.href
-            ? "text-amber-600 font-display italic"
-            : "text-navy-400 hover:text-navy-200",
-        ]}
-        style={`transition-delay: ${i * 50}ms`}
-      >
-        {link.label}
-      </a>
-    ))}
+    {
+      navLinks.map((link, i) => (
+        <a
+          href={link.href}
+          class:list={[
+            "text-2xl tracking-wide transition-colors duration-200",
+            currentPath === link.href
+              ? "text-amber-600 font-display italic"
+              : "text-navy-400 hover:text-navy-200",
+          ]}
+          style={`transition-delay: ${i * 50}ms`}
+        >
+          {link.label}
+        </a>
+      ))
+    }
     <a
       href="/contact"
       class="mt-4 px-8 py-3 bg-amber-500 text-white font-semibold tracking-wide hover:bg-amber-400 transition-colors duration-200"
@@ -97,66 +109,76 @@ const navLinks = [
 
 <script>
   // Navbar scroll effect
-  const nav = document.getElementById('main-nav');
+  const nav = document.getElementById("main-nav");
   let lastScroll = 0;
 
   function updateNavBackground() {
     const currentScroll = window.scrollY;
-    
+
     if (currentScroll > 50) {
-      nav?.classList.add('bg-white/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-navy-800/10');
+      nav?.classList.add(
+        "bg-white/95",
+        "backdrop-blur-xl",
+        "shadow-lg",
+        "shadow-navy-800/10",
+      );
     } else {
-      nav?.classList.remove('bg-white/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-navy-800/10');
+      nav?.classList.remove(
+        "bg-white/95",
+        "backdrop-blur-xl",
+        "shadow-lg",
+        "shadow-navy-800/10",
+      );
     }
-    
+
     lastScroll = currentScroll;
   }
 
   // Check initial scroll position on page load (handles refresh while scrolled)
   updateNavBackground();
 
-  window.addEventListener('scroll', updateNavBackground);
+  window.addEventListener("scroll", updateNavBackground);
 
   // Mobile menu toggle
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const bar1 = document.getElementById('bar-1');
-  const bar2 = document.getElementById('bar-2');
-  const bar3 = document.getElementById('bar-3');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const bar1 = document.getElementById("bar-1");
+  const bar2 = document.getElementById("bar-2");
+  const bar3 = document.getElementById("bar-3");
   let isOpen = false;
 
-  btn?.addEventListener('click', () => {
+  btn?.addEventListener("click", () => {
     isOpen = !isOpen;
-    
+
     if (isOpen) {
-      menu?.classList.remove('translate-x-full');
-      menu?.classList.add('translate-x-0');
-      bar1?.classList.add('rotate-45', 'translate-y-[7px]');
-      bar2?.classList.add('opacity-0');
-      bar3?.classList.add('-rotate-45', '-translate-y-[7px]', 'w-6');
-      document.body.style.overflow = 'hidden';
+      menu?.classList.remove("translate-x-full");
+      menu?.classList.add("translate-x-0");
+      bar1?.classList.add("rotate-45", "translate-y-[7px]");
+      bar2?.classList.add("opacity-0");
+      bar3?.classList.add("-rotate-45", "-translate-y-[7px]", "w-6");
+      document.body.style.overflow = "hidden";
     } else {
-      menu?.classList.add('translate-x-full');
-      menu?.classList.remove('translate-x-0');
-      bar1?.classList.remove('rotate-45', 'translate-y-[7px]');
-      bar2?.classList.remove('opacity-0');
-      bar3?.classList.remove('-rotate-45', '-translate-y-[7px]', 'w-6');
-      document.body.style.overflow = '';
+      menu?.classList.add("translate-x-full");
+      menu?.classList.remove("translate-x-0");
+      bar1?.classList.remove("rotate-45", "translate-y-[7px]");
+      bar2?.classList.remove("opacity-0");
+      bar3?.classList.remove("-rotate-45", "-translate-y-[7px]", "w-6");
+      document.body.style.overflow = "";
     }
-    
-    btn?.setAttribute('aria-expanded', String(isOpen));
+
+    btn?.setAttribute("aria-expanded", String(isOpen));
   });
 
   // Close mobile menu on link click
-  menu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
       isOpen = false;
-      menu?.classList.add('translate-x-full');
-      menu?.classList.remove('translate-x-0');
-      bar1?.classList.remove('rotate-45', 'translate-y-[7px]');
-      bar2?.classList.remove('opacity-0');
-      bar3?.classList.remove('-rotate-45', '-translate-y-[7px]', 'w-6');
-      document.body.style.overflow = '';
+      menu?.classList.add("translate-x-full");
+      menu?.classList.remove("translate-x-0");
+      bar1?.classList.remove("rotate-45", "translate-y-[7px]");
+      bar2?.classList.remove("opacity-0");
+      bar3?.classList.remove("-rotate-45", "-translate-y-[7px]", "w-6");
+      document.body.style.overflow = "";
     });
   });
 </script>

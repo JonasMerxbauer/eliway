@@ -26,18 +26,21 @@ const fullCanonical = canonicalUrl ? `${siteUrl}${canonicalUrl}` : siteUrl;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={fullCanonical} />
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -45,62 +48,65 @@ const fullCanonical = canonicalUrl ? `${siteUrl}${canonicalUrl}` : siteUrl;
     <meta property="og:url" content={fullCanonical} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
     <meta property="og:site_name" content="Eliway IT" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
-    
+
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Eliway IT",
-      "url": siteUrl,
-      "logo": `${siteUrl}/favicon.svg`,
-      "description": "B2B softwarová řešení a informační systém FARAO",
-      "foundingDate": "1999",
-      "address": [
-        {
-          "@type": "PostalAddress",
-          "streetAddress": "Věšínova 939/4",
-          "addressLocality": "Praha 10 - Strašnice",
-          "addressCountry": "CZ"
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Eliway IT",
+        url: siteUrl,
+        logo: `${siteUrl}/favicon.svg`,
+        description: "B2B softwarová řešení a informační systém FARAO",
+        foundingDate: "1999",
+        address: [
+          {
+            "@type": "PostalAddress",
+            streetAddress: "Věšínova 939/4",
+            addressLocality: "Praha 10 - Strašnice",
+            addressCountry: "CZ",
+          },
+          {
+            "@type": "PostalAddress",
+            streetAddress: "Částkova 74",
+            addressLocality: "Plzeň",
+            addressCountry: "CZ",
+          },
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+420-608-483-080",
+          email: "stepan@eliwayit.cz",
+          contactType: "sales",
         },
-        {
-          "@type": "PostalAddress",
-          "streetAddress": "Částkova 74",
-          "addressLocality": "Plzeň",
-          "addressCountry": "CZ"
-        }
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+420-608-483-080",
-        "email": "stepan@eliwayit.cz",
-        "contactType": "sales"
-      }
-    })} />
+      })}
+    />
   </head>
   <body class="bg-white text-navy-100 font-body min-h-screen">
     <slot />
-    
+
     <!-- Reveal animations -->
     <script>
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
+              entry.target.classList.add("revealed");
               observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
       );
 
-      document.querySelectorAll('[data-reveal]').forEach((el) => {
+      document.querySelectorAll("[data-reveal]").forEach((el) => {
         observer.observe(el);
       });
     </script>
