@@ -148,7 +148,7 @@ const stats = [
             <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-amber-500/40"></div>
             <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-amber-500/40"></div>
 
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {[
                 { label: "Obchod", sub: "Řízení" },
                 { label: "Sklad", sub: "Evidence" },
@@ -160,8 +160,8 @@ const stats = [
                 { label: "Bankovnictví", sub: "Elektronické" },
                 { label: "Statistiky", sub: "Reporting" },
               ].map((mod, i) => (
-                <div class={`p-4 text-center border transition-all duration-500 rounded-sm hover:border-amber-500/40 hover:bg-amber-500/5 ${i === 4 ? 'border-amber-500/30 bg-amber-500/5' : 'border-navy-800 bg-navy-900/30'}`}>
-                  <p class={`font-mono text-sm font-medium ${i === 4 ? 'text-amber-600' : 'text-navy-300'}`}>{mod.label}</p>
+                <div class={`p-3 sm:p-4 text-center border transition-all duration-500 rounded-sm min-w-0 hover:border-amber-500/40 hover:bg-amber-500/5 ${i === 4 ? 'border-amber-500/30 bg-amber-500/5' : 'border-navy-800 bg-navy-900/30'}`}>
+                  <p class={`font-mono text-xs sm:text-sm font-medium break-words ${i === 4 ? 'text-amber-600' : 'text-navy-300'}`}>{mod.label}</p>
                   <p class="text-[10px] text-navy-500 mt-1">{mod.sub}</p>
                 </div>
               ))}
