@@ -193,40 +193,53 @@ const timeline = [
 
         <!-- Right sidebar (2 cols) -->
         <div class="lg:col-span-2 animate-fade-in delay-400">
-          <div
-            class="relative bg-white/60 border border-navy-800 p-6 rounded-sm shadow-sm"
-          >
-            <div
-              class="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-amber-500/40"
-            >
+          <div class="relative">
+            <!-- Image with editorial treatment -->
+            <div class="relative overflow-hidden rounded-sm mb-6 shadow-sm border border-navy-800">
+              <img
+                src="/farao.jpg"
+                alt="Práce na informačním systému FARAO"
+                class="w-full h-48 lg:h-56 object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-200/20 to-transparent mix-blend-multiply"></div>
             </div>
-            <h3 class="text-xs tracking-[0.2em] uppercase text-amber-600 mb-4">
-              Hlavní moduly
-            </h3>
-            <div class="space-y-3">
-              {
-                [
-                  "Obchod a řízení objednávek",
-                  "Sklad a inventář",
-                  "Fakturace a vyúčtování",
-                  "Integrace účetnictví",
-                  "Elektronické bankovnictví",
-                  "Výroba a kompletace",
-                  "Správa dokumentů",
-                  "Replikace dat mezi pobočkami",
-                  "Statistiky a reporting",
-                  "Cenová politika",
-                ].map((mod, i) => (
-                  <div class="flex items-center gap-3 group">
-                    <span class="w-6 h-6 flex items-center justify-center text-[10px] font-mono text-navy-500 border border-navy-800 rounded-sm group-hover:border-amber-500/40 group-hover:text-amber-600 transition-all duration-300">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span class="text-sm text-navy-300 group-hover:text-navy-200 transition-colors duration-300">
-                      {mod}
-                    </span>
-                  </div>
-                ))
-              }
+
+            <!-- Module list below image -->
+            <div
+              class="relative bg-white/60 border border-navy-800 p-6 rounded-sm shadow-sm"
+            >
+              <div
+                class="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-amber-500/40"
+              >
+              </div>
+              <h3 class="text-xs tracking-[0.2em] uppercase text-amber-600 mb-4">
+                Hlavní moduly
+              </h3>
+              <div class="space-y-3">
+                {
+                  [
+                    "Obchod a řízení objednávek",
+                    "Sklad a inventář",
+                    "Fakturace a vyúčtování",
+                    "Integrace účetnictví",
+                    "Elektronické bankovnictví",
+                    "Výroba a kompletace",
+                    "Správa dokumentů",
+                    "Replikace dat mezi pobočkami",
+                    "Statistiky a reporting",
+                    "Cenová politika",
+                  ].map((mod, i) => (
+                    <div class="flex items-center gap-3 group">
+                      <span class="w-6 h-6 flex items-center justify-center text-[10px] font-mono text-navy-500 border border-navy-800 rounded-sm group-hover:border-amber-500/40 group-hover:text-amber-600 transition-all duration-300">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span class="text-sm text-navy-300 group-hover:text-navy-200 transition-colors duration-300">
+                        {mod}
+                      </span>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
           </div>
         </div>
