@@ -27,10 +27,6 @@ const values = [
     description: "Obvyklá smlouva zahrnuje telefonickou podporu a pravidelné návštěvy u zákazníka. Podmínky podpory lze přizpůsobit dle individuálních požadavků.",
   },
 ];
-
-const milestones = [
-  { year: "1999", event: "Založení Eliway I.T., první verze systému FARAO" },
-];
 ---
 
 <Layout
@@ -74,10 +70,8 @@ const milestones = [
               <p class="font-display text-[120px] lg:text-[160px] text-navy-800/60 leading-none select-none">1999</p>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center">
-                  <div class="w-20 h-20 mx-auto border-2 border-amber-500 rotate-45 flex items-center justify-center mb-4">
-                    <span class="text-amber-500 font-display text-3xl font-bold -rotate-45">E</span>
-                  </div>
-                  <p class="text-xs tracking-[0.3em] uppercase text-navy-500">Zal.</p>
+                  <img src="/eliway-logo-icon.png" alt="Eliway IT" class="w-12 h-12 mx-auto mb-4" />
+                  <p class="text-xs tracking-[0.3em] uppercase text-navy-500">Založeno</p>
                   <p class="font-display text-xl text-navy-200 mt-1">Praha, CZ</p>
                 </div>
               </div>
@@ -113,49 +107,6 @@ const milestones = [
             <p class="text-navy-400 text-sm leading-relaxed">{value.description}</p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== TIMELINE ==================== -->
-  <section id="history" class="relative py-20 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <SectionHeader
-        label="Časová osa"
-        title="Od roku <em class='text-gradient not-italic'>1999</em>"
-        description="Klíčový milník na naší cestě tvorbou podnikového softwaru."
-      />
-
-      <div class="max-w-2xl mx-auto">
-        <div class="relative">
-          <!-- Vertical line -->
-          <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/30 via-navy-800 to-transparent"></div>
-
-          <div class="space-y-8">
-            {milestones.map((milestone, i) => (
-              <div
-                class="relative flex items-start gap-8 group"
-                data-reveal
-                style={`transition-delay: ${i * 80}ms`}
-              >
-                <!-- Dot -->
-                <div class="relative z-10 flex-shrink-0">
-                  <div class="w-12 h-12 flex items-center justify-center bg-white border border-navy-800 group-hover:border-amber-500/40 transition-colors duration-300 rounded-sm">
-                    <span class="font-mono text-xs text-navy-500 group-hover:text-amber-600 transition-colors duration-300">
-                      {milestone.year.slice(2)}
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Content -->
-                <div class="pt-2.5">
-                  <span class="text-xs font-mono text-amber-600/60">{milestone.year}</span>
-                  <p class="text-navy-300 mt-1">{milestone.event}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   </section>
