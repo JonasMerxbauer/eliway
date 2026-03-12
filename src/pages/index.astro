@@ -14,15 +14,13 @@ const industries = [
   { icon: "🔧", title: "Servis automobilů", description: "Evidence vozidel, plánování prohlídek, výkony techniků, normování práce a propojení na systémy výrobců vozidel." },
   { icon: "⚡", title: "Servis elektro", description: "Servis bílé techniky, výtahů, klimatizací a tepelných čerpadel s plánováním pravidelné údržby." },
   { icon: "🔩", title: "Instalatérství", description: "Evidence zásahů u zákazníka, plánování pravidelných prohlídek, kalkulace, výkony dělníků a plánování času." },
-  { icon: "♻️", title: "Sběr a zpracování materiálu", description: "Jednoduchá obsluha s rychlým odbavením. Nákup, prodej, zhodnocení a přehledná evidence materiálu." },
-  { icon: "📦", title: "Logistika a sklady", description: "Evidence různých druhů zboží — příjem, výdej, opravy, vlastní výroba a propojení na obchodní objednávky." },
+  { icon: "♻️", title: "Výkup surovin", description: "Velice jednoduchá obsluha, rychlé odbavení zákazníků. Prodej vykoupených surovin, zhodnocení. Export do EVI." },
+  { icon: "📦", title: "Obchod s paletami", description: "Evidence různých druhů palet. Opravy, výkup, prodej, vlastní výroba. Propojení na obchodní objednávky." },
 ];
 
 const stats = [
   { value: "25+", label: "Let zkušeností" },
-  { value: "500+", label: "Implementací" },
   { value: "9", label: "Oborových řešení" },
-  { value: "99%", label: "Spokojenost klientů" },
 ];
 ---
 
@@ -106,7 +104,7 @@ const stats = [
   <!-- ==================== STATS BAR ==================== -->
   <section class="relative border-y border-navy-800 bg-navy-900/50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div class="grid grid-cols-2 gap-8 lg:gap-12 max-w-2xl mx-auto">
         {stats.map((stat, i) => (
           <div class="text-center" data-reveal style={`transition-delay: ${i * 100}ms`}>
             <p class="font-display text-4xl lg:text-5xl text-amber-600 mb-2">{stat.value}</p>
@@ -152,15 +150,15 @@ const stats = [
 
             <div class="grid grid-cols-3 gap-4">
               {[
-                { label: "ERP", sub: "Jádro" },
-                { label: "CRM", sub: "Vztahy" },
-                { label: "WMS", sub: "Sklad" },
-                { label: "SCM", sub: "Dodávky" },
-                { label: "MRP", sub: "Plánování" },
-                { label: "FIN", sub: "Finance" },
-                { label: "HR", sub: "Lidé" },
-                { label: "BI", sub: "Analytika" },
-                { label: "API", sub: "Propojení" },
+                { label: "Obchod", sub: "Řízení" },
+                { label: "Sklad", sub: "Evidence" },
+                { label: "Fakturace", sub: "Doklady" },
+                { label: "Účetnictví", sub: "Finance" },
+                { label: "Výroba", sub: "Kompletace" },
+                { label: "Dokumenty", sub: "Správa" },
+                { label: "Replikace", sub: "Pobočky" },
+                { label: "Bankovnictví", sub: "Elektronické" },
+                { label: "Statistiky", sub: "Reporting" },
               ].map((mod, i) => (
                 <div class={`p-4 text-center border transition-all duration-500 rounded-sm hover:border-amber-500/40 hover:bg-amber-500/5 ${i === 4 ? 'border-amber-500/30 bg-amber-500/5' : 'border-navy-800 bg-navy-900/30'}`}>
                   <p class={`font-mono text-sm font-medium ${i === 4 ? 'text-amber-600' : 'text-navy-300'}`}>{mod.label}</p>
@@ -175,7 +173,7 @@ const stats = [
                   <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                   <span class="text-xs text-navy-500">Všechny systémy v provozu</span>
                 </div>
-                <span class="font-mono text-xs text-navy-600">FARAO v4.2</span>
+                <span class="font-mono text-xs text-navy-600">FARAO SQL</span>
               </div>
             </div>
           </div>
@@ -354,9 +352,9 @@ const stats = [
             href: "/products#planning",
           },
           {
-            title: "Evidence a zpracování materiálu",
-            desc: "Rychlé zadávání s uživatelsky příjemným řešením. Nákup, prodej, zhodnocení a přehledná evidence s minimální potřebou zaškolení.",
-            tag: "Evidence Materiálu",
+            title: "Výkup surovin",
+            desc: "Vysoká rychlost zadávání s uživatelsky příjemným řešením. Prodej vykoupených surovin, zhodnocení a export do EVI.",
+            tag: "Výkup Surovin",
             href: "/products#collection",
           },
           {
