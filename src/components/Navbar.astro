@@ -61,35 +61,36 @@ const navLinks = [
     </nav>
   </div>
 
-  <!-- Mobile Menu -->
-  <div
-    class="lg:hidden fixed inset-0 top-20 bg-white/98 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-out z-40"
-    id="mobile-menu"
-  >
-    <div class="flex flex-col items-center justify-center h-full gap-8">
-      {navLinks.map((link, i) => (
-        <a
-          href={link.href}
-          class:list={[
-            "text-2xl tracking-wide transition-colors duration-200",
-            currentPath === link.href
-              ? "text-amber-600 font-display italic"
-              : "text-navy-400 hover:text-navy-200",
-          ]}
-          style={`transition-delay: ${i * 50}ms`}
-        >
-          {link.label}
-        </a>
-      ))}
-      <a
-        href="/contact"
-        class="mt-4 px-8 py-3 bg-amber-500 text-white font-semibold tracking-wide hover:bg-amber-400 transition-colors duration-200"
-      >
-        Kontaktujte nás
-      </a>
-    </div>
-  </div>
 </header>
+
+<!-- Mobile Menu -->
+<div
+  class="lg:hidden fixed inset-0 top-20 bg-white/98 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-out z-40"
+  id="mobile-menu"
+>
+  <div class="flex flex-col items-center justify-center h-full gap-8">
+    {navLinks.map((link, i) => (
+      <a
+        href={link.href}
+        class:list={[
+          "text-2xl tracking-wide transition-colors duration-200",
+          currentPath === link.href
+            ? "text-amber-600 font-display italic"
+            : "text-navy-400 hover:text-navy-200",
+        ]}
+        style={`transition-delay: ${i * 50}ms`}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href="/contact"
+      class="mt-4 px-8 py-3 bg-amber-500 text-white font-semibold tracking-wide hover:bg-amber-400 transition-colors duration-200"
+    >
+      Kontaktujte nás
+    </a>
+  </div>
+</div>
 
 <!-- Spacer -->
 <div class="h-20"></div>
@@ -125,16 +126,16 @@ const navLinks = [
     if (isOpen) {
       menu?.classList.remove('translate-x-full');
       menu?.classList.add('translate-x-0');
-      bar1?.classList.add('rotate-45', 'translate-y-[4px]');
+      bar1?.classList.add('rotate-45', 'translate-y-[7px]');
       bar2?.classList.add('opacity-0');
-      bar3?.classList.add('-rotate-45', '-translate-y-[4px]', 'w-6');
+      bar3?.classList.add('-rotate-45', '-translate-y-[7px]', 'w-6');
       document.body.style.overflow = 'hidden';
     } else {
       menu?.classList.add('translate-x-full');
       menu?.classList.remove('translate-x-0');
-      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar1?.classList.remove('rotate-45', 'translate-y-[7px]');
       bar2?.classList.remove('opacity-0');
-      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[7px]', 'w-6');
       document.body.style.overflow = '';
     }
     
@@ -147,9 +148,9 @@ const navLinks = [
       isOpen = false;
       menu?.classList.add('translate-x-full');
       menu?.classList.remove('translate-x-0');
-      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar1?.classList.remove('rotate-45', 'translate-y-[7px]');
       bar2?.classList.remove('opacity-0');
-      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[7px]', 'w-6');
       document.body.style.overflow = '';
     });
   });
