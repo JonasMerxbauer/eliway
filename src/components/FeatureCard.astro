@@ -17,18 +17,18 @@ const { icon, title, description, href, index = 0 } = Astro.props;
 >
   <!-- Hover glow effect -->
   <div
-    class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-sm"
+    class="absolute inset-0 bg-linear-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-sm"
   >
   </div>
 
   <!-- Corner accent -->
   <div class="absolute top-0 right-0 w-12 h-12 overflow-hidden">
     <div
-      class="absolute top-0 right-0 w-px h-8 bg-gradient-to-b from-amber-500/40 to-transparent group-hover:h-12 transition-all duration-500"
+      class="absolute top-0 right-0 w-px h-8 bg-linear-to-b from-amber-500/40 to-transparent group-hover:h-12 transition-all duration-500"
     >
     </div>
     <div
-      class="absolute top-0 right-0 h-px w-8 bg-gradient-to-l from-amber-500/40 to-transparent group-hover:w-12 transition-all duration-500"
+      class="absolute top-0 right-0 h-px w-8 bg-linear-to-l from-amber-500/40 to-transparent group-hover:w-12 transition-all duration-500"
     >
     </div>
   </div>

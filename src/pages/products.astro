@@ -113,7 +113,7 @@ const products = [
 
   <!-- ==================== HERO ==================== -->
   <section class="relative py-20 lg:py-28 overflow-hidden">
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-500/[0.02] to-transparent"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-amber-500/2 to-transparent"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-3xl">
@@ -144,20 +144,20 @@ const products = [
             class:list={[
               "group relative overflow-hidden rounded-sm border transition-all duration-500",
               product.highlight
-                ? "bg-gradient-to-br from-white/80 to-navy-900/30 border-amber-500/20 hover:border-amber-500/40 shadow-sm"
+                ? "bg-linear-to-br from-white/80 to-navy-900/30 border-amber-500/20 hover:border-amber-500/40 shadow-sm"
                 : "bg-white/60 border-navy-800 hover:border-navy-700 shadow-sm",
             ]}
             data-reveal
             style={`transition-delay: ${i * 80}ms`}
           >
             {product.highlight && (
-              <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-amber-500/0 via-amber-500/50 to-amber-500/0"></div>
+              <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-amber-500/0 via-amber-500/50 to-amber-500/0"></div>
             )}
 
             <div class="flex flex-col lg:flex-row">
               <!-- Image column -->
               <div class:list={[
-                "relative lg:w-[320px] xl:w-[380px] flex-shrink-0 overflow-hidden",
+                "relative lg:w-[320px] xl:w-[380px] shrink-0 overflow-hidden",
                 i % 2 === 0 ? "" : "lg:order-last",
               ]}>
                 <div class="relative h-56 lg:h-full min-h-[280px]">
@@ -171,19 +171,19 @@ const products = [
                   <div class:list={[
                     "absolute inset-0",
                     product.highlight
-                      ? "bg-gradient-to-t lg:bg-gradient-to-r from-amber-600/10 to-transparent mix-blend-multiply"
-                      : "bg-gradient-to-t lg:bg-gradient-to-r from-navy-200/10 to-transparent mix-blend-multiply",
-                    i % 2 !== 0 ? "lg:bg-gradient-to-l" : "",
+                      ? "bg-linear-to-t lg:bg-linear-to-r from-amber-600/10 to-transparent mix-blend-multiply"
+                      : "bg-linear-to-t lg:bg-linear-to-r from-navy-200/10 to-transparent mix-blend-multiply",
+                    i % 2 !== 0 ? "lg:bg-linear-to-l" : "",
                   ]}></div>
                   <!-- Diagonal edge on desktop -->
                   <div class:list={[
                     "hidden lg:block absolute top-0 bottom-0 w-16",
                     i % 2 === 0
-                      ? "right-0 bg-gradient-to-l from-white/60 to-transparent"
-                      : "left-0 bg-gradient-to-r from-white/60 to-transparent",
+                      ? "right-0 bg-linear-to-l from-white/60 to-transparent"
+                      : "left-0 bg-linear-to-r from-white/60 to-transparent",
                   ]}></div>
                   <!-- Bottom fade on mobile -->
-                  <div class="lg:hidden absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/60 to-transparent"></div>
+                  <div class="lg:hidden absolute bottom-0 left-0 right-0 h-12 bg-linear-to-t from-white/60 to-transparent"></div>
                 </div>
               </div>
 
@@ -220,12 +220,12 @@ const products = [
                   </div>
 
                   <!-- Features -->
-                  <div class="lg:w-72 flex-shrink-0">
+                  <div class="lg:w-72 shrink-0">
                     <h4 class="text-xs tracking-[0.2em] uppercase text-navy-600 mb-4">Klíčové funkce</h4>
                     <ul class="space-y-3">
                       {product.features.map((feature) => (
                         <li class="flex items-start gap-3 text-sm text-navy-400">
-                          <svg class="w-4 h-4 text-amber-500/60 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <svg class="w-4 h-4 text-amber-500/60 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                           </svg>
                           {feature}
@@ -262,7 +262,7 @@ const products = [
 
         <!-- Connector lines visual -->
         <div class="flex justify-center mb-8">
-          <div class="w-px h-8 bg-gradient-to-b from-amber-500/30 to-navy-800"></div>
+          <div class="w-px h-8 bg-linear-to-b from-amber-500/30 to-navy-800"></div>
         </div>
 
         <!-- Surrounding modules -->
@@ -286,7 +286,7 @@ const products = [
 
   <!-- ==================== CTA ==================== -->
   <section class="relative py-20 lg:py-32 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-900/30 to-navy-950"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-navy-900/30 to-navy-950"></div>
     <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center" data-reveal>
       <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-navy-200 leading-tight mb-6">
         Nevíte, který produkt se <em class="text-gradient not-italic">hodí</em>?
