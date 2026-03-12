@@ -100,7 +100,7 @@ const navLinks = [
   const nav = document.getElementById('main-nav');
   let lastScroll = 0;
 
-  window.addEventListener('scroll', () => {
+  function updateNavBackground() {
     const currentScroll = window.scrollY;
     
     if (currentScroll > 50) {
@@ -110,7 +110,12 @@ const navLinks = [
     }
     
     lastScroll = currentScroll;
-  });
+  }
+
+  // Check initial scroll position on page load (handles refresh while scrolled)
+  updateNavBackground();
+
+  window.addEventListener('scroll', updateNavBackground);
 
   // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
