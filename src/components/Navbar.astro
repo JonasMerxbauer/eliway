@@ -24,7 +24,7 @@ const navLinks = [
   <div class="px-6">
     <nav class="flex items-center justify-between h-20">
       <a href="/" class="flex items-center group relative" aria-label="Eliway IT Domů">
-        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-12 w-auto transition-transform duration-300 group-hover:scale-[1.02]" />
+        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-12 w-auto" />
       </a>
       <button
         class="flex flex-col gap-1.5 p-2 relative"
@@ -52,7 +52,7 @@ const navLinks = [
       
       <!-- Logo -->
       <a href="/" class="flex items-center group relative shrink-0" aria-label="Eliway IT Domů">
-        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-11 w-auto transition-transform duration-300 group-hover:scale-[1.02]" />
+        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-11 w-auto" />
       </a>
 
       <!-- Spacer pushes nav links + CTA to the right -->
@@ -72,16 +72,6 @@ const navLinks = [
                 currentPath === link.href ? "is-active" : "",
               ]}
             >
-              <span
-                class:list={[
-                  "font-mono text-[10px] tracking-wider transition-colors duration-300",
-                  currentPath === link.href
-                    ? "text-amber-500"
-                    : "text-navy-700 group-hover:text-amber-400",
-                ]}
-              >
-                {link.index}
-              </span>
               <span
                 class:list={[
                   "text-sm tracking-wide transition-colors duration-300",
@@ -168,16 +158,6 @@ const navLinks = [
             ]}
             style={`transition-delay: ${200 + i * 80}ms`}
           >
-            <span
-              class:list={[
-                "font-mono text-xs tracking-wider shrink-0 transition-colors duration-300",
-                currentPath === link.href
-                  ? "text-amber-500"
-                  : "text-navy-700 group-hover:text-amber-400",
-              ]}
-            >
-              {link.index}
-            </span>
             <span
               class:list={[
                 "font-display text-4xl sm:text-5xl tracking-tight transition-all duration-300",
@@ -267,15 +247,18 @@ const navLinks = [
     content: '';
     position: absolute;
     inset: 2px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+    background: rgba(59, 130, 246, 0.05);
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: 6px;
   }
 
-  .nav-link:hover::before,
+  .nav-link:hover::before {
+    opacity: 0;
+  }
+
   .nav-link.is-active::before {
-    opacity: 1;
+    opacity: 0;
   }
 
   /* ===== MOBILE STYLES ===== */
