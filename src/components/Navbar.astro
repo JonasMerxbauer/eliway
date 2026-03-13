@@ -8,173 +8,387 @@ interface Props {
 const { currentPath = "/" } = Astro.props;
 
 const navLinks = [
-  { href: "/", label: "Domů" },
-  { href: "/products", label: "Produkty" },
-  { href: "/farao", label: "FARAO" },
-  { href: "/about", label: "O nás" },
+  { href: "/", label: "Domů", index: "01" },
+  { href: "/products", label: "Produkty", index: "02" },
+  { href: "/farao", label: "FARAO", index: "03" },
+  { href: "/about", label: "O nás", index: "04" },
 ];
 ---
 
+<!-- Mobile: full-width fixed header (unchanged behavior) -->
 <header
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-  id="main-nav"
+  class="lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  id="main-nav-mobile"
 >
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+  <div class="h-px w-full bg-gradient-to-r from-transparent via-amber-500/40 to-transparent"></div>
+  <div class="px-6">
     <nav class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="/" class="flex items-center group" aria-label="Eliway IT Domů">
-        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-12 w-auto" />
+      <a href="/" class="flex items-center group relative" aria-label="Eliway IT Domů">
+        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-12 w-auto transition-transform duration-300 group-hover:scale-[1.02]" />
       </a>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-1">
-        {
-          navLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                "relative px-4 py-2 text-sm tracking-wide transition-colors duration-200",
-                currentPath === link.href
-                  ? "text-amber-600"
-                  : "text-navy-400 hover:text-navy-200",
-              ]}
-            >
-              {link.label}
-              {currentPath === link.href && (
-                <span class="absolute bottom-0 left-4 right-4 h-px bg-amber-500" />
-              )}
-            </a>
-          ))
-        }
-        <Button href="/contact" variant="primary" size="md" class="ml-4">
-          Kontaktujte nás
-        </Button>
-      </div>
-
-      <!-- Mobile Menu Button -->
       <button
-        class="lg:hidden flex flex-col gap-1.5 p-2"
+        class="flex flex-col gap-1.5 p-2 relative"
         id="mobile-menu-btn"
         aria-label="Otevřít menu"
         aria-expanded="false"
       >
-        <span
-          class="w-6 h-px bg-navy-300 transition-all duration-300 origin-center"
-          id="bar-1"></span>
-        <span
-          class="w-6 h-px bg-navy-300 transition-all duration-300"
-          id="bar-2"></span>
-        <span
-          class="w-4 h-px bg-amber-500 transition-all duration-300 origin-center"
-          id="bar-3"></span>
+        <span class="w-6 h-px bg-navy-300 transition-all duration-300 origin-center" id="bar-1"></span>
+        <span class="w-6 h-px bg-navy-300 transition-all duration-300" id="bar-2"></span>
+        <span class="w-4 h-px bg-amber-500 transition-all duration-300 origin-center" id="bar-3"></span>
       </button>
     </nav>
   </div>
 </header>
 
-<!-- Mobile Menu -->
+<!-- Desktop: floating nav matching page content width -->
+<header
+  class="hidden lg:block fixed top-0 left-0 right-0 z-50 pointer-events-none"
+  id="main-nav"
+>
+  <div class="floating-nav-wrapper" id="floating-nav">
+    <nav class="floating-nav max-w-7xl mx-auto" id="floating-nav-inner">
+      <!-- Subtle top edge glow -->
+      <div class="absolute -top-px left-12 right-12 h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent floating-nav-glow"></div>
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center group relative shrink-0" aria-label="Eliway IT Domů">
+        <img src="/eliway-logo-text.png" alt="Eliway IT" class="h-11 w-auto transition-transform duration-300 group-hover:scale-[1.02]" />
+      </a>
+
+      <!-- Spacer pushes nav links + CTA to the right -->
+      <div class="flex-1"></div>
+
+      <!-- Vertical divider -->
+      <div class="w-px h-7 bg-navy-800/60 mx-4 shrink-0"></div>
+
+      <!-- Nav links with editorial numbering -->
+      <div class="flex items-center gap-0">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                "nav-link group relative flex items-baseline gap-2 px-5 py-2 transition-all duration-300",
+                currentPath === link.href ? "is-active" : "",
+              ]}
+            >
+              <span
+                class:list={[
+                  "font-mono text-[10px] tracking-wider transition-colors duration-300",
+                  currentPath === link.href
+                    ? "text-amber-500"
+                    : "text-navy-700 group-hover:text-amber-400",
+                ]}
+              >
+                {link.index}
+              </span>
+              <span
+                class:list={[
+                  "text-sm tracking-wide transition-colors duration-300",
+                  currentPath === link.href
+                    ? "text-navy-100"
+                    : "text-navy-400 group-hover:text-navy-200",
+                ]}
+              >
+                {link.label}
+              </span>
+
+              <!-- Active / hover indicator -->
+              <span
+                class:list={[
+                  "absolute bottom-0 left-5 right-5 h-px transition-all duration-300 ease-out",
+                  currentPath === link.href
+                    ? "bg-amber-500 scale-x-100"
+                    : "bg-amber-400 scale-x-0 group-hover:scale-x-100",
+                ]}
+                style="transform-origin: left center;"
+              />
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- CTA with corner bracket accent -->
+      <div class="ml-6 relative group shrink-0">
+        <span class="absolute -top-1 -left-1 w-2.5 h-2.5 border-t border-l border-amber-500/50 transition-all duration-300 group-hover:border-amber-500 group-hover:w-3 group-hover:h-3 group-hover:-top-1.5 group-hover:-left-1.5"></span>
+        <span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b border-r border-amber-500/50 transition-all duration-300 group-hover:border-amber-500 group-hover:w-3 group-hover:h-3 group-hover:-bottom-1.5 group-hover:-right-1.5"></span>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-widest uppercase text-amber-600 border border-amber-500/20 bg-amber-500/[0.04] hover:bg-amber-500/10 hover:border-amber-500/40 transition-all duration-300"
+        >
+          <span>Kontaktujte nás</span>
+          <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu - Full-screen editorial takeover -->
 <div
-  class="lg:hidden fixed inset-0 top-20 bg-white/98 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-out z-40"
+  class="lg:hidden fixed inset-0 z-40 pointer-events-none"
   id="mobile-menu"
 >
-  <div class="flex flex-col items-center justify-center h-full gap-8">
-    {
-      navLinks.map((link, i) => (
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-white opacity-0 transition-opacity" id="mobile-backdrop" style="transition-duration: 100ms"></div>
+  
+  <!-- Decorative grid pattern -->
+  <svg class="absolute inset-0 w-full h-full opacity-0 transition-opacity" id="mobile-grid" aria-hidden="true" style="transition-duration: 100ms">
+    <defs>
+      <pattern id="nav-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="0.3" class="text-navy-800"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#nav-grid)" />
+  </svg>
+
+  <!-- Content -->
+  <div class="relative flex flex-col h-full pt-24 pb-12 px-10" id="mobile-content">
+    <!-- Monospace label -->
+    <div class="mb-auto">
+      <span class="font-mono text-[10px] tracking-[0.3em] uppercase text-navy-600 opacity-0 mobile-link" style="transition-delay: 100ms">
+        Navigace
+      </span>
+      <div class="w-8 h-px bg-amber-500/40 mt-3 mb-8 opacity-0 mobile-link" style="transition-delay: 150ms"></div>
+    </div>
+    
+    <!-- Links -->
+    <nav class="flex flex-col gap-1 mb-auto">
+      {
+        navLinks.map((link, i) => (
+          <a
+            href={link.href}
+            class:list={[
+              "mobile-link opacity-0 group flex items-baseline gap-4 py-3 transition-all duration-300",
+              currentPath === link.href
+                ? "is-active"
+                : "",
+            ]}
+            style={`transition-delay: ${200 + i * 80}ms`}
+          >
+            <span
+              class:list={[
+                "font-mono text-xs tracking-wider shrink-0 transition-colors duration-300",
+                currentPath === link.href
+                  ? "text-amber-500"
+                  : "text-navy-700 group-hover:text-amber-400",
+              ]}
+            >
+              {link.index}
+            </span>
+            <span
+              class:list={[
+                "font-display text-4xl sm:text-5xl tracking-tight transition-all duration-300",
+                currentPath === link.href
+                  ? "text-navy-100 italic"
+                  : "text-navy-400 group-hover:text-navy-200 group-hover:translate-x-2",
+              ]}
+            >
+              {link.label}
+            </span>
+            {currentPath === link.href && (
+              <span class="w-12 h-px bg-amber-500 self-center ml-2"></span>
+            )}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Bottom section -->
+    <div class="opacity-0 mobile-link" style="transition-delay: 550ms">
+      <div class="w-full h-px bg-navy-800 mb-6"></div>
+      <div class="flex items-center justify-between">
+        <div class="font-mono text-[10px] tracking-wider text-navy-600 uppercase">
+          <span class="block">Eliway IT, s.r.o.</span>
+          <span class="block mt-1 text-navy-700">Praha &middot; Plzeň</span>
+        </div>
         <a
-          href={link.href}
-          class:list={[
-            "text-2xl tracking-wide transition-colors duration-200",
-            currentPath === link.href
-              ? "text-amber-600 font-display italic"
-              : "text-navy-400 hover:text-navy-200",
-          ]}
-          style={`transition-delay: ${i * 50}ms`}
+          href="/contact"
+          class="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold tracking-widest uppercase text-white bg-amber-500 hover:bg-amber-600 transition-colors duration-300"
         >
-          {link.label}
+          Kontakt
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </a>
-      ))
-    }
-    <Button href="/contact" variant="primary" size="lg">
-      Kontaktujte nás
-    </Button>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- Spacer -->
 <div class="h-20"></div>
 
-<script>
-  // Navbar scroll effect
-  const nav = document.getElementById("main-nav");
-  let lastScroll = 0;
-
-  function updateNavBackground() {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 50) {
-      nav?.classList.add(
-        "bg-white/95",
-        "backdrop-blur-xl",
-        "shadow-lg",
-        "shadow-navy-800/10",
-      );
-    } else {
-      nav?.classList.remove(
-        "bg-white/95",
-        "backdrop-blur-xl",
-        "shadow-lg",
-        "shadow-navy-800/10",
-      );
-    }
-
-    lastScroll = currentScroll;
+<style>
+  /* ===== FLOATING NAV ===== */
+  .floating-nav-wrapper {
+    padding: 16px 24px 0;
+    pointer-events: none;
+    animation: navFloat 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.1s;
   }
 
-  // Check initial scroll position on page load (handles refresh while scrolled)
-  updateNavBackground();
+  @keyframes navFloat {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+  }
 
-  window.addEventListener("scroll", updateNavBackground);
+  .floating-nav {
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
 
-  // Mobile menu toggle
+    background: #ffffff;
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 24px -4px rgba(0, 0, 0, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Desktop nav link hover */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 6px;
+  }
+
+  .nav-link:hover::before,
+  .nav-link.is-active::before {
+    opacity: 1;
+  }
+
+  /* ===== MOBILE STYLES ===== */
+  .mobile-link {
+    transform: translateY(20px);
+    transition: opacity 0.2s ease-in, transform 0.2s ease-in, color 0.2s;
+  }
+
+  .mobile-menu-open .mobile-link {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s;
+  }
+</style>
+
+<script>
+  // === Mobile nav scroll effect ===
+  const mobileNav = document.getElementById("main-nav-mobile");
+  
+  function updateMobileNavBackground() {
+    if (window.scrollY > 50) {
+      mobileNav?.classList.add("bg-white/95", "backdrop-blur-xl", "shadow-lg", "shadow-navy-800/10");
+    } else {
+      mobileNav?.classList.remove("bg-white/95", "backdrop-blur-xl", "shadow-lg", "shadow-navy-800/10");
+    }
+  }
+  updateMobileNavBackground();
+  window.addEventListener("scroll", updateMobileNavBackground);
+
+  // === Mobile menu toggle ===
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
+  const backdrop = document.getElementById("mobile-backdrop");
+  const grid = document.getElementById("mobile-grid");
   const bar1 = document.getElementById("bar-1");
   const bar2 = document.getElementById("bar-2");
   const bar3 = document.getElementById("bar-3");
   let isOpen = false;
 
-  btn?.addEventListener("click", () => {
-    isOpen = !isOpen;
-
-    if (isOpen) {
-      menu?.classList.remove("translate-x-full");
-      menu?.classList.add("translate-x-0");
-      bar1?.classList.add("rotate-45", "translate-y-[7px]");
-      bar2?.classList.add("opacity-0");
-      bar3?.classList.add("-rotate-45", "-translate-y-[7px]", "w-6");
-      document.body.style.overflow = "hidden";
-    } else {
-      menu?.classList.add("translate-x-full");
-      menu?.classList.remove("translate-x-0");
-      bar1?.classList.remove("rotate-45", "translate-y-[7px]");
-      bar2?.classList.remove("opacity-0");
-      bar3?.classList.remove("-rotate-45", "-translate-y-[7px]", "w-6");
-      document.body.style.overflow = "";
+  function openMenu() {
+    isOpen = true;
+    if (backdrop) {
+      backdrop.style.transitionDelay = "0ms";
+      backdrop.style.transitionDuration = "500ms";
     }
+    if (grid) grid.style.transitionDuration = "700ms";
+    
+    const links = menu?.querySelectorAll(".mobile-link") as NodeListOf<HTMLElement>;
+    if (links) {
+      const openDelays = [100, 150, 200, 280, 360, 440, 550];
+      links.forEach((link, i) => {
+        link.style.transitionDelay = `${openDelays[i] ?? 200 + i * 80}ms`;
+      });
+    }
+    
+    menu?.classList.remove("pointer-events-none");
+    menu?.classList.add("pointer-events-auto");
+    backdrop?.classList.remove("opacity-0");
+    backdrop?.classList.add("opacity-100");
+    grid?.classList.remove("opacity-0");
+    grid?.classList.add("opacity-100");
+    menu?.classList.add("mobile-menu-open");
+    bar1?.classList.add("rotate-45", "translate-y-[7px]");
+    bar2?.classList.add("opacity-0");
+    bar3?.classList.add("-rotate-45", "-translate-y-[7px]", "w-6");
+    document.body.style.overflow = "hidden";
+    btn?.setAttribute("aria-expanded", "true");
+  }
 
-    btn?.setAttribute("aria-expanded", String(isOpen));
+  function closeMenu() {
+    isOpen = false;
+    menu?.classList.add("pointer-events-none");
+    menu?.classList.remove("pointer-events-auto");
+    
+    const links = menu?.querySelectorAll(".mobile-link") as NodeListOf<HTMLElement>;
+    const totalLinks = links ? links.length : 0;
+    const staggerStep = 40;
+    if (links) {
+      links.forEach((link, i) => {
+        const reverseIndex = totalLinks - 1 - i;
+        link.style.transitionDelay = `${reverseIndex * staggerStep}ms`;
+      });
+    }
+    
+    if (grid) grid.style.transitionDuration = "200ms";
+    menu?.classList.remove("mobile-menu-open");
+    grid?.classList.add("opacity-0");
+    grid?.classList.remove("opacity-100");
+    
+    const totalCloseTime = totalLinks * staggerStep + 200;
+    if (backdrop) {
+      backdrop.style.transitionDelay = `${totalCloseTime - 100}ms`;
+      backdrop.style.transitionDuration = "200ms";
+    }
+    backdrop?.classList.add("opacity-0");
+    backdrop?.classList.remove("opacity-100");
+    
+    bar1?.classList.remove("rotate-45", "translate-y-[7px]");
+    bar2?.classList.remove("opacity-0");
+    bar3?.classList.remove("-rotate-45", "-translate-y-[7px]", "w-6");
+    document.body.style.overflow = "";
+    btn?.setAttribute("aria-expanded", "false");
+  }
+
+  btn?.addEventListener("click", () => {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
-  // Close mobile menu on link click
   menu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      isOpen = false;
-      menu?.classList.add("translate-x-full");
-      menu?.classList.remove("translate-x-0");
-      bar1?.classList.remove("rotate-45", "translate-y-[7px]");
-      bar2?.classList.remove("opacity-0");
-      bar3?.classList.remove("-rotate-45", "-translate-y-[7px]", "w-6");
-      document.body.style.overflow = "";
-    });
+    link.addEventListener("click", closeMenu);
   });
 </script>
